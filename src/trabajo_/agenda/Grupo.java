@@ -2,12 +2,12 @@ package trabajo_.agenda;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
-public class Grupo implements Comparable<Personaje> {
+public class Grupo {
 
     private Personaje[] personajes;
     private int tamReal;
@@ -62,14 +62,23 @@ public class Grupo implements Comparable<Personaje> {
 
     }
 
-    @Override
-    public int compareTo(Personaje o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void orderArray() {
+        Arrays.sort(personajes, 0, tamReal, new Personaje());
+
     }
 
     public void writeFile() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt"));
+            for (int i = 0; i < tamReal; i++) {
+                writer.write(personajes[i].getNombre() + "#");
+                writer.write(personajes[i].getStrength() + "#");
+                writer.write(personajes[i].getSpeed() + "#");
+                writer.write(personajes[i].getResistance());
+                writer.newLine();
+            }
+            writer.close();
+
         } catch (IOException ex) {
             callOut.printWriterException();
         }
@@ -78,10 +87,17 @@ public class Grupo implements Comparable<Personaje> {
     public void readFile() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
-        } catch (FileNotFoundException ex) {
+            String line = reader.readLine();
+            while (line != null) {
+            String[] linesplit = line.split("#");
+            callOut.printData(Arrays.toString(linesplit));
+            callOut.printLineJump();
+            line = reader.readLine();
+            }
+        } catch (IOException ex) {
             callOut.printReaderException();
         }
-
+        
     }
 
 }

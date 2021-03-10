@@ -44,7 +44,7 @@ public class Output {
     }
 
     public void printData(String x) {
-        System.out.print(x + ": ");
+        System.out.print(x + " ");
     }
 
     public void printData(int x) {

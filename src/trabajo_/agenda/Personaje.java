@@ -1,6 +1,10 @@
 package trabajo_.agenda;
 
-public class Personaje {
+import java.util.Comparator;
+
+
+
+public class Personaje implements Comparable<Personaje>, Comparator<Personaje>{
 
     private String nombre;
     private int strength;
@@ -42,6 +46,27 @@ public class Personaje {
 
     public int getResistance() {
         return this.resistance;
+    }
+
+    @Override
+    public int compareTo(Personaje o) {
+        int result = 0;
+        
+        
+        
+        
+        return result;
+    }
+
+    @Override
+    public int compare(Personaje o1, Personaje o2) {
+        int result = 0;
+        if (o1.strength < o2.strength) {
+            result = -1;
+        } else if (o1.strength > o2.strength){
+            result = 1;
+        }
+        return result;
     }
 
 }
