@@ -62,11 +62,14 @@ public class Grupo {
 
     }
 
-    public void orderArray() {
-        Arrays.sort(personajes, 0, tamReal, new Personaje());
-
+    public void orderArrayName() {  
+        Arrays.sort(personajes, 0, tamReal);
     }
-
+    
+    public void orderArrayStrength(){
+        Arrays.sort(personajes, new Personaje());
+    }
+   
     public void writeFile() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt"));
@@ -89,15 +92,15 @@ public class Grupo {
             BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
             String line = reader.readLine();
             while (line != null) {
-            String[] linesplit = line.split("#");
-            callOut.printData(Arrays.toString(linesplit));
-            callOut.printLineJump();
-            line = reader.readLine();
+                String[] linesplit = line.split("#");
+                callOut.printData(Arrays.toString(linesplit));
+                callOut.printLineJump();
+                line = reader.readLine();
             }
         } catch (IOException ex) {
             callOut.printReaderException();
         }
-        
+
     }
 
 }

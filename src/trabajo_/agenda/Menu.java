@@ -21,9 +21,23 @@ public class Menu {
                     elGrupo.watch();
                     break;
                 case 4:
+                    callOut.printSubMenuOrder();
+                    variable = callIn.setInt();
+                    switch (variable) {
+                        case 1:
+                            elGrupo.orderArrayName();
+                            break;
+                        case 2:
+                            elGrupo.orderArrayStrength();
+                            break;
+                        default:
+                            break;
+
+                    }
+                    elGrupo.orderArrayName();
                     break;
                 case 5:
-                    callOut.printSubMenu();
+                    callOut.printSubMenuFiles();
                     variable = callIn.setInt();
                     switch (variable) {
                         case 1:

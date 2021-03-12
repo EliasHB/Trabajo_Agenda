@@ -12,8 +12,14 @@ public class Output {
         System.out.println("-  6 Salir               -");
         System.out.println("--------------------------");
     }
+    
+    public void printSubMenuOrder(){
+        System.out.println("-  1 Ordenar por nombre  -");
+        System.out.println("-  2 Ordenar por atributo-");
+        System.out.println("-  3 Salir               -");
+    }
 
-    public void printSubMenu() {
+    public void printSubMenuFiles() {
         System.out.println("-  1 Importar fichero    -");
         System.out.println("-  2 Exportar fichero    -");
         System.out.println("-  3 Salir               -");

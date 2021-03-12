@@ -50,20 +50,15 @@ public class Personaje implements Comparable<Personaje>, Comparator<Personaje>{
 
     @Override
     public int compareTo(Personaje o) {
-        int result = 0;
-        
-        
-        
-        
-        return result;
+        return this.nombre.compareToIgnoreCase(o.nombre);
     }
 
     @Override
     public int compare(Personaje o1, Personaje o2) {
         int result = 0;
-        if (o1.strength < o2.strength) {
+        if (o1.getStrength() < o2.getStrength()) {
             result = -1;
-        } else if (o1.strength > o2.strength){
+        } else if (o1.getStrength() > o2.getStrength()){
             result = 1;
         }
         return result;
