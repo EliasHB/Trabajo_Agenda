@@ -5,7 +5,7 @@ public class Menu {
     public static void main(String[] args) {
         Output callOut = new Output();
         Input callIn = new Input();
-        Grupo elGrupo = new Grupo(2);
+        Grupo elGrupo = new Grupo(10);
         int variable = 0;
         while (variable != 6) {
             callOut.printmenu();
@@ -49,7 +49,7 @@ public class Menu {
                         default:
                             break;
                     }
-                case 6:
+                default:
                     break;
             }
         }

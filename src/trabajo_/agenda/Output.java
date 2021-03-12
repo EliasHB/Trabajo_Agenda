@@ -12,8 +12,8 @@ public class Output {
         System.out.println("-  6 Salir               -");
         System.out.println("--------------------------");
     }
-    
-    public void printSubMenuOrder(){
+
+    public void printSubMenuOrder() {
         System.out.println("-  1 Ordenar por nombre  -");
         System.out.println("-  2 Ordenar por atributo-");
         System.out.println("-  3 Salir               -");
@@ -56,13 +56,16 @@ public class Output {
     public void printData(int x) {
         System.out.print(x + " ");
     }
-    public void printLineJump(){
+
+    public void printLineJump() {
         System.out.println();
     }
-    public void printWriterException(){
+
+    public void printWriterException() {
         System.out.println("No hay fichero para escribir");
     }
-    public void printReaderException(){
+
+    public void printReaderException() {
         System.out.println("No hay fichero para leer");
     }
 }

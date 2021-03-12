@@ -62,14 +62,14 @@ public class Grupo {
 
     }
 
-    public void orderArrayName() {  
+    public void orderArrayName() {
         Arrays.sort(personajes, 0, tamReal);
     }
-    
-    public void orderArrayStrength(){
+
+    public void orderArrayStrength() {
         Arrays.sort(personajes, new Personaje());
     }
-   
+
     public void writeFile() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt"));
