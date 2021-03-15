@@ -20,9 +20,10 @@ public class Output {
     }
 
     public void printSubMenuFiles() {
-        System.out.println("-  1 Importar fichero    -");
-        System.out.println("-  2 Exportar fichero    -");
-        System.out.println("-  3 Salir               -");
+        System.out.println("-  1 Guardar en fichero  -");
+        System.out.println("-  2 Leer Fichero        -");
+        System.out.println("-  3 Cargar fichero      -");
+        System.out.println("-  4 Salir               -");
     }
 
     public void printName() {

@@ -32,10 +32,7 @@ public class Menu {
                             break;
                         default:
                             break;
-
                     }
-                    elGrupo.orderArrayName();
-                    break;
                 case 5:
                     callOut.printSubMenuFiles();
                     variable = callIn.setInt();
@@ -45,6 +42,9 @@ public class Menu {
                             break;
                         case 2:
                             elGrupo.readFile();
+                            break;
+                        case 3:
+                            elGrupo.fromFileToArray();
                             break;
                         default:
                             break;

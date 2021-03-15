@@ -102,5 +102,7 @@ public class Grupo {
         }
 
     }
-
+    public void fromFileToArray(){
+        
+    }
 }
