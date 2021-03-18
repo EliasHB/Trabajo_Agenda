@@ -4,10 +4,10 @@ import java.util.Comparator;
 
 public class Personaje implements Comparable<Personaje>, Comparator<Personaje> {
 
-    private String nombre;
-    private int strength;
-    private int speed;
-    private int resistance;
+    protected String nombre;
+    protected int strength;
+    protected int speed;
+    protected int resistance;
     private Input callIn = new Input();
 
     public String setNombre() {

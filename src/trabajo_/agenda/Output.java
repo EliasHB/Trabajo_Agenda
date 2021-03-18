@@ -69,4 +69,12 @@ public class Output {
     public void printReaderException() {
         System.out.println("No hay fichero para leer");
     }
+
+    public void printLoadAlert() {
+        System.out.println("El array tiene contenido, continuar borrara lo anterior");
+    }
+
+    public void continueLoad() {
+        System.out.println("Introduzca 1 para continuar, 2 para salir");
+    }
 }

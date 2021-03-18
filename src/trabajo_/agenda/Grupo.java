@@ -7,12 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Grupo {
+public class Grupo extends Personaje {
 
     private Personaje[] personajes;
     private int tamReal;
     private Personaje personaje;
     private Output callOut = new Output();
+    private Input callIn = new Input();
 
     Grupo(int tamMax) {
         personajes = new Personaje[tamMax];
@@ -77,7 +78,7 @@ public class Grupo {
                 writer.write(personajes[i].getNombre() + "#");
                 writer.write(personajes[i].getStrength() + "#");
                 writer.write(personajes[i].getSpeed() + "#");
-                writer.write(personajes[i].getResistance());
+                writer.write(personajes[i].getResistance()+ "");
                 writer.newLine();
             }
             writer.close();
@@ -102,7 +103,39 @@ public class Grupo {
         }
 
     }
-    public void fromFileToArray(){
-        
+
+    public void fromFileToArray() {
+        int x = 0;
+        if (tamReal != 0) {
+            callOut.printLoadAlert();
+            callOut.continueLoad();
+            x = callIn.setInt();
+        } else if (tamReal == 0 || x == 1) {
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
+                String line = reader.readLine();
+                while (line != null) {
+                    String[] linesplit = line.split("#");
+                    int var1 = Integer.parseInt(linesplit[1]);
+                    int var2 = Integer.parseInt(linesplit[2]);
+                    int var3 = Integer.parseInt(linesplit[3]);
+                    personaje = new Personaje();
+                    if (tamReal < personajes.length) {
+                        personaje.nombre = linesplit[0];
+                        personaje.strength = var1;
+                        personaje.speed = var2;
+                        personaje.resistance = var3;
+                        personajes[tamReal] = personaje;
+                        tamReal++;
+                    } else {
+                        callOut.printOutOfSpace();
+                    }
+                    line = reader.readLine();
+                }
+            } catch (IOException ex) {
+                callOut.printReaderException();
+            }
+        }
+
     }
 }
