@@ -4,14 +4,19 @@ import java.util.Comparator;
 
 public class Personaje implements Comparable<Personaje>, Comparator<Personaje> {
 
-    protected String nombre;
-    protected int strength;
-    protected int speed;
-    protected int resistance;
+    private String nombre;
+    private int strength;
+    private int speed;
+    private int resistance;
     private Input callIn = new Input();
 
     public String setNombre() {
         nombre = callIn.setFrase();
+        return nombre;
+    }
+
+    public String setNombre(String x) {
+        nombre = x;
         return nombre;
     }
 
@@ -20,13 +25,28 @@ public class Personaje implements Comparable<Personaje>, Comparator<Personaje> {
         return strength;
     }
 
+    public int setStrength(int x) {
+        strength = x;
+        return strength;
+    }
+
     public int setSpeed() {
         speed = callIn.setInt();
         return speed;
     }
 
+    public int setSpeed(int x) {
+        speed = x;
+        return speed;
+    }
+
     public int setResistance() {
         resistance = callIn.setInt();
+        return resistance;
+    }
+
+    public int setResistance(int x) {
+        resistance = x;
         return resistance;
     }
 

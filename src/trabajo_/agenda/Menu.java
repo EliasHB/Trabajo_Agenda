@@ -7,7 +7,7 @@ public class Menu {
         Input callIn = new Input();
         Grupo elGrupo = new Grupo(10);
         int variable = 0;
-        while (variable != 6) {
+        while (variable != 7) {
             callOut.printmenu();
             variable = callIn.setInt();
             switch (variable) {
@@ -21,6 +21,9 @@ public class Menu {
                     elGrupo.watch();
                     break;
                 case 4:
+                    elGrupo.search();
+                    break;
+                case 5:
                     callOut.printSubMenuOrder();
                     variable = callIn.setInt();
                     switch (variable) {
@@ -33,7 +36,7 @@ public class Menu {
                         default:
                             break;
                     }
-                case 5:
+                case 6:
                     callOut.printSubMenuFiles();
                     variable = callIn.setInt();
                     switch (variable) {

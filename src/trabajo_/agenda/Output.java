@@ -7,23 +7,28 @@ public class Output {
         System.out.println("-  1 Añadir datos        -");
         System.out.println("-  2 Borrar datos        -");
         System.out.println("-  3 Ver contenido       -");
-        System.out.println("-  4 Ordenar datos       -");
-        System.out.println("-  5 Opciones de fichero -");
-        System.out.println("-  6 Salir               -");
+        System.out.println("-  4 Buscar datos        -");
+        System.out.println("-  5 Ordenar datos       -");
+        System.out.println("-  6 Opciones de fichero -");
+        System.out.println("-  7 Salir               -");
         System.out.println("--------------------------");
     }
 
     public void printSubMenuOrder() {
+        System.out.println("--------------------------");
         System.out.println("-  1 Ordenar por nombre  -");
         System.out.println("-  2 Ordenar por atributo-");
         System.out.println("-  3 Salir               -");
+        System.out.println("--------------------------");
     }
 
     public void printSubMenuFiles() {
+        System.out.println("--------------------------");
         System.out.println("-  1 Guardar en fichero  -");
-        System.out.println("-  2 Leer Fichero        -");
+        System.out.println("-  2 Leer fichero        -");
         System.out.println("-  3 Cargar fichero      -");
         System.out.println("-  4 Salir               -");
+        System.out.println("--------------------------");
     }
 
     public void printName() {
@@ -56,6 +61,14 @@ public class Output {
 
     public void printData(int x) {
         System.out.print(x + " ");
+    }
+
+    public void printSearch() {
+        System.out.println("Nombre a buscar:");
+    }
+
+    public void printSearchNotFound() {
+        System.out.println("No hay coincidencias");
     }
 
     public void printLineJump() {
