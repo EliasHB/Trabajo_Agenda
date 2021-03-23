@@ -36,6 +36,7 @@ public class Menu {
                         default:
                             break;
                     }
+                    break;
                 case 6:
                     callOut.printSubMenuFiles();
                     variable = callIn.setInt();
@@ -52,6 +53,7 @@ public class Menu {
                         default:
                             break;
                     }
+                    break;
                 default:
                     break;
             }
