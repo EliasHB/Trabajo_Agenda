@@ -14,6 +14,14 @@ public class Output {
         System.out.println("--------------------------");
     }
 
+    public void removePosition() {
+        System.out.println("Posicion a borrar (0-9):");
+    }
+
+    public void wrong() {
+        System.out.println("Valor fuera de limites");
+    }
+
     public void printSubMenuOrder() {
         System.out.println("--------------------------");
         System.out.println("-  1 Ordenar por nombre  -");

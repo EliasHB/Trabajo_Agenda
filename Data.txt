@@ -1,2 +1,10 @@
-orion#5#5#5
-ada#5#5#5
+Orion#5#7#6
+Ada#7#6#3
+Brynn#7#3#6
+Diana#4#8#5
+Ember#6#7#3
+Lord Vraxx#7#6#3
+Lucien#5#5#8
+Rayman#6#6#5
+Ulgrim#9#3#4
+Val#5#7#4

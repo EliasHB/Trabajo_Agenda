@@ -8,19 +8,19 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Grupo {
-    
+
     private Personaje[] personajes;
     private int tamReal;
     private Personaje personaje;
     private Output callOut = new Output();
     private Input callIn = new Input();
-    
+
     Grupo(int tamMax) {
         personajes = new Personaje[tamMax];
         tamReal = 0;
-        
+
     }
-    
+
     public void add() {
         personaje = new Personaje();
         if (tamReal < personajes.length) {
@@ -38,16 +38,32 @@ public class Grupo {
             callOut.printOutOfSpace();
         }
     }
-    
+
     public void remove() {
+        int x;
+        boolean check = true;
         if (tamReal > 0) {
+            callOut.removePosition();
+            x = callIn.setInt();
+            while (check) {
+                if (x >= 0 && x < 9) {
+                    for (int i = x; i < personajes.length - 1; i++) {
+                        personajes[i] = personajes[i + 1];
+                        check = false;
+                    }
+                } else if (x == 9) {
+                    check = false;
+                } else {
+                    callOut.wrong();
+                }
+            }
             tamReal--;
         } else {
             callOut.printEmpty();
         }
-        
+
     }
-    
+
     public void watch() {
         if (tamReal > 0) {
             for (int i = 0; i < tamReal; i++) {
@@ -61,7 +77,7 @@ public class Grupo {
             callOut.printEmpty();
         }
     }
-    
+
     public void search() {
         callOut.printSearch();
         boolean check = true;
@@ -75,22 +91,22 @@ public class Grupo {
                 callOut.printLineJump();
                 check = false;
             }
-            
+
         }
         if (check) {
             callOut.printSearchNotFound();
         }
-        
+
     }
-    
+
     public void orderArrayName() {
         Arrays.sort(personajes, 0, tamReal);
     }
-    
+
     public void orderArrayStrength() {
         Arrays.sort(personajes, new Personaje());
     }
-    
+
     public void writeFile() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt"));
@@ -102,12 +118,12 @@ public class Grupo {
                 writer.newLine();
             }
             writer.close();
-            
+
         } catch (IOException ex) {
             callOut.printWriterException();
         }
     }
-    
+
     public void readFile() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
@@ -122,16 +138,17 @@ public class Grupo {
         } catch (IOException ex) {
             callOut.printReaderException();
         }
-        
+
     }
-    
+
     public void fromFileToArray() {
         int x = 0;
         if (tamReal != 0) {
             callOut.printLoadAlert();
             callOut.continueLoad();
             x = callIn.setInt();
-        } else if (tamReal == 0 || x == 1) {
+        }
+        if (tamReal == 0 || x == 1) {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
                 String line = reader.readLine();
@@ -158,6 +175,6 @@ public class Grupo {
                 callOut.printReaderException();
             }
         }
-        
+
     }
 }
