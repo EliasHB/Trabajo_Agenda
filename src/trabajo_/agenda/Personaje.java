@@ -1,8 +1,8 @@
 package trabajo_.agenda;
 
-import java.util.Comparator;
 
-public class Personaje implements Comparable<Personaje>, Comparator<Personaje> {
+
+public class Personaje implements Comparable<Personaje>{
 
     private String nombre;
     private int strength;
@@ -71,15 +71,6 @@ public class Personaje implements Comparable<Personaje>, Comparator<Personaje> {
         return this.nombre.compareToIgnoreCase(o.nombre);
     }
 
-    @Override
-    public int compare(Personaje o1, Personaje o2) {
-        int result = 0;
-        if (o1.getStrength() < o2.getStrength()) {
-            result = -1;
-        } else if (o1.getStrength() > o2.getStrength()) {
-            result = 1;
-        }
-        return result;
-    }
+    
 
 }

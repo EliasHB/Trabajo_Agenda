@@ -5,72 +5,58 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Grupo {
 
-    private Personaje[] personajes;
-    private int tamReal;
+    private ArrayList<Personaje> group = new ArrayList<>();
     private Personaje personaje;
     private Output callOut = new Output();
     private Input callIn = new Input();
 
-    Grupo(int tamMax) {
-        personajes = new Personaje[tamMax];
-        tamReal = 0;
-
-    }
-
     public void add() {
+
         personaje = new Personaje();
-        if (tamReal < personajes.length) {
-            callOut.printName();
-            personaje.setNombre();
-            callOut.printStrength();
-            personaje.setStrength();
-            callOut.printSpeed();
-            personaje.setSpeed();
-            callOut.printResistance();
-            personaje.setResistance();
-            personajes[tamReal] = personaje;
-            tamReal++;
-        } else {
-            callOut.printOutOfSpace();
-        }
+        callOut.printName();
+        personaje.setNombre();
+        callOut.printStrength();
+        personaje.setStrength();
+        callOut.printSpeed();
+        personaje.setSpeed();
+        callOut.printResistance();
+        personaje.setResistance();
+        group.add(personaje);
     }
 
     public void remove() {
         int x;
         boolean check = true;
-        if (tamReal > 0) {
+        if (!group.isEmpty()) {
             callOut.removePosition();
             x = callIn.setInt();
             while (check) {
-                if (x >= 0 && x < 9) {
-                    for (int i = x; i < personajes.length - 1; i++) {
-                        personajes[i] = personajes[i + 1];
-                        check = false;
-                    }
+                if (x >= 0 && x < group.size()) {
+                    group.remove(x);
+                    check = false;
                 } else if (x == 9) {
                     check = false;
                 } else {
                     callOut.wrong();
                 }
             }
-            tamReal--;
         } else {
             callOut.printEmpty();
         }
-
     }
 
     public void watch() {
-        if (tamReal > 0) {
-            for (int i = 0; i < tamReal; i++) {
-                callOut.printData(personajes[i].getNombre());
-                callOut.printData(personajes[i].getStrength());
-                callOut.printData(personajes[i].getSpeed());
-                callOut.printData(personajes[i].getResistance());
+        if (!group.isEmpty()) {
+            for (int i = 0; i < group.size(); i++) {
+                callOut.printData(group.get(i).getNombre());
+                callOut.printData(group.get(i).getStrength());
+                callOut.printData(group.get(i).getSpeed());
+                callOut.printData(group.get(i).getResistance());
                 callOut.printLineJump();
             }
         } else {
@@ -82,39 +68,33 @@ public class Grupo {
         callOut.printSearch();
         boolean check = true;
         String x = callIn.setFrase();
-        for (int i = 0; i < tamReal && check; i++) {
-            if (x.equals(personajes[i].getNombre())) {
-                callOut.printData(personajes[i].getNombre());
-                callOut.printData(personajes[i].getStrength());
-                callOut.printData(personajes[i].getSpeed());
-                callOut.printData(personajes[i].getResistance());
+        for (int i = 0; i < group.size() && check; i++) {
+            if (x.equals(group.get(i).getNombre())) {
+                callOut.printData(group.get(i).getNombre());
+                callOut.printData(group.get(i).getStrength());
+                callOut.printData(group.get(i).getSpeed());
+                callOut.printData(group.get(i).getResistance());
                 callOut.printLineJump();
                 check = false;
             }
-
         }
         if (check) {
             callOut.printSearchNotFound();
         }
-
     }
 
-    public void orderArrayName() {
-        Arrays.sort(personajes, 0, tamReal);
-    }
-
-    public void orderArrayStrength() {
-        Arrays.sort(personajes, new Personaje());
+    public void orderListByName() {
+        group.sort(new OrderByName());    
     }
 
     public void writeFile() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt"));
-            for (int i = 0; i < tamReal; i++) {
-                writer.write(personajes[i].getNombre() + "#");
-                writer.write(personajes[i].getStrength() + "#");
-                writer.write(personajes[i].getSpeed() + "#");
-                writer.write(personajes[i].getResistance() + "");
+            for (int i = 0; i < group.size(); i++) {
+                writer.write(group.get(i).getNombre() + "#");
+                writer.write(group.get(i).getStrength() + "#");
+                writer.write(group.get(i).getSpeed() + "#");
+                writer.write(group.get(i).getResistance() + "");
                 writer.newLine();
             }
             writer.close();
@@ -143,31 +123,27 @@ public class Grupo {
 
     public void fromFileToArray() {
         int x = 0;
-        if (tamReal != 0) {
+        if (!group.isEmpty()) {
             callOut.printLoadAlert();
             callOut.continueLoad();
             x = callIn.setInt();
         }
-        if (tamReal == 0 || x == 1) {
+        if (group.isEmpty() || x == 1) {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
                 String line = reader.readLine();
+                group.removeAll(group);
                 while (line != null) {
                     String[] linesplit = line.split("#");
                     int var1 = Integer.parseInt(linesplit[1]);
                     int var2 = Integer.parseInt(linesplit[2]);
                     int var3 = Integer.parseInt(linesplit[3]);
                     personaje = new Personaje();
-                    if (tamReal < personajes.length) {
-                        personaje.setNombre(linesplit[0]);
-                        personaje.setStrength(var1);
-                        personaje.setSpeed(var2);
-                        personaje.setResistance(var3);
-                        personajes[tamReal] = personaje;
-                        tamReal++;
-                    } else {
-                        callOut.printOutOfSpace();
-                    }
+                    personaje.setNombre(linesplit[0]);
+                    personaje.setStrength(var1);
+                    personaje.setSpeed(var2);
+                    personaje.setResistance(var3);
+                    group.add(personaje);
                     line = reader.readLine();
                 }
                 reader.close();

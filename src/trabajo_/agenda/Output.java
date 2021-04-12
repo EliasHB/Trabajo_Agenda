@@ -22,14 +22,6 @@ public class Output {
         System.out.println("Valor fuera de limites");
     }
 
-    public void printSubMenuOrder() {
-        System.out.println("--------------------------");
-        System.out.println("-  1 Ordenar por nombre  -");
-        System.out.println("-  2 Ordenar por atributo-");
-        System.out.println("-  3 Salir               -");
-        System.out.println("--------------------------");
-    }
-
     public void printSubMenuFiles() {
         System.out.println("--------------------------");
         System.out.println("-  1 Guardar en fichero  -");
