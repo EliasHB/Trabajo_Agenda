@@ -31,6 +31,7 @@ public class Menu {
                     variable = callIn.setInt();
                     switch (variable) {
                         case 1:
+                            elGrupo.binaryFile();
                             elGrupo.writeFile();
                             break;
                         case 2:

@@ -1,8 +1,10 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
+import java.io.Serializable;
 
 
-public class Personaje implements Comparable<Personaje>{
+
+public class Personaje implements Comparable<Personaje>, Serializable{
 
     private String nombre;
     private int strength;

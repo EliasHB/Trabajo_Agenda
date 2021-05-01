@@ -1,5 +1,7 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
+import java.io.IOException;
+
 public class Output {
 
     public void printmenu() {
@@ -89,5 +91,9 @@ public class Output {
 
     public void continueLoad() {
         System.out.println("Introduzca 1 para continuar, 2 para salir");
+    }
+    
+    public void printException(IOException e){
+        System.out.println(e.getMessage());
     }
 }

@@ -2,13 +2,16 @@ package com.mycompany.trabajo_agenda_fxmaven;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Grupo {
+public class Grupo implements Serializable {
 
     private ArrayList<Personaje> group = new ArrayList<>();
     private Personaje personaje;
@@ -84,7 +87,7 @@ public class Grupo {
     }
 
     public void orderListByName() {
-        group.sort(new OrderByName());    
+        group.sort(new OrderByName());
     }
 
     public void writeFile() {
@@ -101,6 +104,18 @@ public class Grupo {
 
         } catch (IOException ex) {
             callOut.printWriterException();
+        }
+    }
+
+    public void binaryFile() {
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("BData.dat"));
+            for (int i = 0; i < group.size(); i++) {
+                os.writeObject(group.get(i));
+            }                                 //PENDIENTE DE ARREGLAR
+            os.close();
+        } catch (IOException e) {
+            callOut.printException(e);
         }
     }
 
