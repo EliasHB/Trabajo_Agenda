@@ -13,12 +13,12 @@ import static org.junit.Assert.*;
  * @author W10
  */
 public class GrupoTest {
-    
+
     public GrupoTest() {
     }
 
     @org.junit.Test
     public void testSomeMethod() {
     }
-    
+
 }

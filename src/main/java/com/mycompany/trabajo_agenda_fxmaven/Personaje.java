@@ -2,9 +2,7 @@ package com.mycompany.trabajo_agenda_fxmaven;
 
 import java.io.Serializable;
 
-
-
-public class Personaje implements Comparable<Personaje>, Serializable{
+public class Personaje implements Comparable<Personaje>, Serializable {
 
     private String nombre;
     private int strength;
@@ -72,7 +70,5 @@ public class Personaje implements Comparable<Personaje>, Serializable{
     public int compareTo(Personaje o) {
         return this.nombre.compareToIgnoreCase(o.nombre);
     }
-
-    
 
 }
