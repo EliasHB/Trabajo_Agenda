@@ -2,11 +2,14 @@ package com.mycompany.trabajo_agenda_fxmaven;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.EOFException;
+import java.io.FileInputStream;
 
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -89,6 +92,28 @@ public class Grupo implements Serializable {
 
     public void orderListByName() {
         group.sort(new OrderByName());
+    }
+
+    public void binaryFileWrite() throws IOException { 
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("BData.dat"));
+        for (int i = 0; i < group.size(); i++) {
+            os.writeObject(group.get(i));
+        }
+        os.close();
+    }
+
+    public void binaryFileRead() throws IOException, ClassNotFoundException {
+        ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat"));
+        try {
+            while (true) {
+                Personaje x = (Personaje) oi.readObject();
+                group.add(x);
+            }
+
+        } catch (EOFException e) {
+
+        }
+
     }
 
     public void writeFile() {

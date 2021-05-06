@@ -1,8 +1,10 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
+import java.io.IOException;
+
 public class Menu {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Output callOut = new Output();
         Input callIn = new Input();
         Grupo elGrupo = new Grupo();
@@ -31,10 +33,12 @@ public class Menu {
                     variable = callIn.setInt();
                     switch (variable) {
                         case 1:
-                            elGrupo.writeFile();
+                            elGrupo.binaryFileWrite();
+                           // elGrupo.writeFile();
                             break;
                         case 2:
-                            elGrupo.readFile();
+                            elGrupo.binaryFileRead();
+                            //elGrupo.readFile();
                             break;
                         case 3:
                             elGrupo.fromFileToArray();
