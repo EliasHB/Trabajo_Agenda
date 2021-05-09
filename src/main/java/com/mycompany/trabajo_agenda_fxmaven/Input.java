@@ -1,12 +1,13 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
+
 import java.util.Scanner;
 
-public class Input {
+public class Input{
 
     private int value;
     private String frase;
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
     public String setFrase() {
         frase = sc.nextLine();

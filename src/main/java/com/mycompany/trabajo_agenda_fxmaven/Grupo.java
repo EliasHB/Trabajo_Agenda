@@ -102,18 +102,13 @@ public class Grupo implements Serializable {
         os.close();
     }
 
-    public void binaryFileRead() throws IOException, ClassNotFoundException {
+    public static void binaryFileRead() throws IOException, ClassNotFoundException {
         ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat"));
-        try {
-            while (true) {
-                Personaje x = (Personaje) oi.readObject();
-                group.add(x);
-            }
-
-        } catch (EOFException e) {
-
+        ArrayList<Personaje> newGruoup = new ArrayList<>();
+        while (true){
+            newGruoup.add((Personaje) oi.readObject());
         }
-
+        
     }
 
     public void writeFile() {

@@ -34,11 +34,11 @@ public class Menu {
                     switch (variable) {
                         case 1:
                             elGrupo.binaryFileWrite();
-                           // elGrupo.writeFile();
+                            elGrupo.writeFile();
                             break;
                         case 2:
                             elGrupo.binaryFileRead();
-                            //elGrupo.readFile();
+                            elGrupo.readFile();
                             break;
                         case 3:
                             elGrupo.fromFileToArray();

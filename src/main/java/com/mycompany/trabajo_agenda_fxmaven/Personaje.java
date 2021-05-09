@@ -8,7 +8,7 @@ public class Personaje implements Comparable<Personaje>, Serializable {
     private int strength;
     private int speed;
     private int resistance;
-    private Input callIn = new Input();
+    private final Input callIn = new Input();
 
     public String setNombre() {
         nombre = callIn.setFrase();
