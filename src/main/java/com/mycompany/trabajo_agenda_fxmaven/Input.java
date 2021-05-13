@@ -11,12 +11,12 @@ public class Input{
 
     public String setFrase() {
         frase = sc.nextLine();
+        sc.nextLine();
         return frase;
     }
 
-    public int setInt() {
+    public int setInt() {        
         value = sc.nextInt();
         return value;
-
     }
 }

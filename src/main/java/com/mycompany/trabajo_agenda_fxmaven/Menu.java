@@ -12,9 +12,14 @@ public class Menu {
         while (variable != 7) {
             callOut.printmenu();
             variable = callIn.setInt();
-            switch (variable) {
+            switch (variable) {                
                 case 1:
-                    elGrupo.add();
+                    callOut.printAtrib();
+                    String name = callIn.setFrase();
+                    int strength = callIn.setInt();
+                    int speed = callIn.setInt();
+                    int resis = callIn.setInt();
+                    elGrupo.add(name, strength, speed, resis);
                     break;
                 case 2:
                     elGrupo.remove();
@@ -37,7 +42,7 @@ public class Menu {
                             elGrupo.writeFile();
                             break;
                         case 2:
-                            elGrupo.binaryFileRead();
+                            Grupo.binaryFileRead();
                             elGrupo.readFile();
                             break;
                         case 3:

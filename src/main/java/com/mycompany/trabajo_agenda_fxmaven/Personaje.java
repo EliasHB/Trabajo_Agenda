@@ -8,21 +8,11 @@ public class Personaje implements Comparable<Personaje>, Serializable {
     private int strength;
     private int speed;
     private int resistance;
-    private final Input callIn = new Input();
-
-    public String setNombre() {
-        nombre = callIn.setFrase();
-        return nombre;
-    }
+    
 
     public String setNombre(String x) {
         nombre = x;
         return nombre;
-    }
-
-    public int setStrength() {
-        strength = callIn.setInt();
-        return strength;
     }
 
     public int setStrength(int x) {
@@ -30,19 +20,9 @@ public class Personaje implements Comparable<Personaje>, Serializable {
         return strength;
     }
 
-    public int setSpeed() {
-        speed = callIn.setInt();
-        return speed;
-    }
-
     public int setSpeed(int x) {
         speed = x;
         return speed;
-    }
-
-    public int setResistance() {
-        resistance = callIn.setInt();
-        return resistance;
     }
 
     public int setResistance(int x) {

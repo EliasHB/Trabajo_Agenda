@@ -33,21 +33,10 @@ public class Output {
         System.out.println("--------------------------");
     }
 
-    public void printName() {
-        System.out.println("Introduzca nombre:");
+    public void printAtrib() {
+        System.out.println("Introduzca nombre, fuerza, velocidad y resistencia");
     }
 
-    public void printStrength() {
-        System.out.println("Introduzca valor de fuerza:");
-    }
-
-    public void printSpeed() {
-        System.out.println("Introduzca valor de velocidad:");
-    }
-
-    public void printResistance() {
-        System.out.println("Introduzca valor de resistencia:");
-    }
 
     public void printOutOfSpace() {
         System.out.println("Tabla llena");

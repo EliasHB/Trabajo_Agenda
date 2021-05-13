@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.FileInputStream;
-
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,22 +17,17 @@ import java.util.Arrays;
 
 public class Grupo implements Serializable {
 
-    private ArrayList<Personaje> group = new ArrayList<>();
+    private final ArrayList<Personaje> group = new ArrayList<>();
     private Personaje personaje;
-    private Output callOut = new Output();
-    private Input callIn = new Input();
+    private final Output callOut = new Output();
+    private final Input callIn = new Input();
 
-    public void add() {
-
+    public void add(String name, int strength, int speed, int resis) {
         personaje = new Personaje();
-        callOut.printName();
-        personaje.setNombre();
-        callOut.printStrength();
-        personaje.setStrength();
-        callOut.printSpeed();
-        personaje.setSpeed();
-        callOut.printResistance();
-        personaje.setResistance();
+        personaje.setNombre(name);
+        personaje.setStrength(strength);
+        personaje.setSpeed(speed);
+        personaje.setResistance(resis);
         group.add(personaje);
     }
 
@@ -94,21 +89,27 @@ public class Grupo implements Serializable {
         group.sort(new OrderByName());
     }
 
-    public void binaryFileWrite() throws IOException { 
-        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("BData.dat"));
-        for (int i = 0; i < group.size(); i++) {
-            os.writeObject(group.get(i));
+    public void binaryFileWrite(){
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("BData.dat"))) {
+            for (int i = 0; i < group.size(); i++) {
+                os.writeObject(group.get(i));
+            }
+        }catch(IOException e){
+            
         }
-        os.close();
     }
 
-    public static void binaryFileRead() throws IOException, ClassNotFoundException {
-        ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat"));
-        ArrayList<Personaje> newGruoup = new ArrayList<>();
-        while (true){
-            newGruoup.add((Personaje) oi.readObject());
+    public static void binaryFileRead() throws ClassNotFoundException, FileNotFoundException {
+        try {
+            ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat"));
+            ArrayList<Personaje> newGruoup = new ArrayList<>();
+            while (true) {
+                newGruoup.add((Personaje) oi.readObject());
+            }
+        } catch (IOException e) {
+            e.getMessage();
         }
-        
+
     }
 
     public void writeFile() {
