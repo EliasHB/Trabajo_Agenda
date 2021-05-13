@@ -66,5 +66,11 @@ public class ProyectTest {
         assertEquals(0, x.compare(a, b));
         
     }
+    @Test
+    public void testAdd(){
+        Grupo x = new Grupo();
+        x.add("orion", 5, 5, 5);
+        
+    }
     
 }

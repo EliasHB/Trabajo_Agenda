@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>com.mycompany.trabajo_agenda_fxmaven.Menu</mainClass>
+        <mainClass>com.mycompany.trabajo_agenda_fxmaven.MainApp</mainClass>
     </properties>
 
     <organization>
