@@ -22,13 +22,16 @@ public class Menu {
                     elGrupo.add(name, strength, speed, resis);
                     break;
                 case 2:
-                    elGrupo.remove();
+                    callOut.removePosition();
+                    int x = callIn.setInt();
+                    elGrupo.remove(x);
                     break;
                 case 3:
-                    elGrupo.watch();
+                    elGrupo.watchtextmode();
                     break;
                 case 4:
-                    elGrupo.search();
+                    callOut.printSearch();
+                    elGrupo.searchtextmode();
                     break;
                 case 5:
                     elGrupo.orderListByName();

@@ -31,28 +31,11 @@ public class Grupo implements Serializable {
         group.add(personaje);
     }
 
-    public void remove() {
-        int x;
-        boolean check = true;
-        if (!group.isEmpty()) {
-            callOut.removePosition();
-            x = callIn.setInt();
-            while (check) {
-                if (x >= 0 && x < group.size()) {
-                    group.remove(x);
-                    check = false;
-                } else if (x == 9) {
-                    check = false;
-                } else {
-                    callOut.wrong();
-                }
-            }
-        } else {
-            callOut.printEmpty();
-        }
+    public void remove(int x) {
+        group.remove(x);
     }
 
-    public void watch() {
+    public void watchtextmode() {
         if (!group.isEmpty()) {
             for (int i = 0; i < group.size(); i++) {
                 callOut.printData(group.get(i).getNombre());
@@ -65,9 +48,21 @@ public class Grupo implements Serializable {
             callOut.printEmpty();
         }
     }
+    
+    public String watch(){
+        String result = "";
+        for (int i = 0; i < group.size(); i++) {
+            String a1 = group.get(i).getNombre();
+            int a2 = group.get(i).getStrength();
+            int a3 = group.get(i).getSpeed();
+            int a4 = group.get(i).getResistance();
+            result = result + a1 + " " + a2 + " " + a3 + " " + a4 + System.lineSeparator() ;
+        }
+        return result;
+              
+    }
 
-    public void search() {
-        callOut.printSearch();
+    public void searchtextmode() {
         boolean check = true;
         String x = callIn.setFrase();
         for (int i = 0; i < group.size() && check; i++) {
@@ -84,18 +79,30 @@ public class Grupo implements Serializable {
             callOut.printSearchNotFound();
         }
     }
+    
+    public String search(String x){
+        String result = "";
+        for (int i = 0; i < group.size(); i++) {
+            if (x.equals(group.get(i).getNombre())) {
+                result = result + group.get(i).getNombre() + " " + group.get(i).getStrength()
+                        + " " + group.get(i).getSpeed() + " " + group.get(i).getResistance()
+                        + System.lineSeparator();
+            } 
+        }
+        return result;
+    }
 
     public void orderListByName() {
         group.sort(new OrderByName());
     }
 
-    public void binaryFileWrite(){
+    public void binaryFileWrite() {
         try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("BData.dat"))) {
             for (int i = 0; i < group.size(); i++) {
                 os.writeObject(group.get(i));
             }
-        }catch(IOException e){
-            
+        } catch (IOException e) {
+
         }
     }
 
