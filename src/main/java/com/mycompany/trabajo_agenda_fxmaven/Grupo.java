@@ -48,18 +48,18 @@ public class Grupo implements Serializable {
             callOut.printEmpty();
         }
     }
-    
-    public String watch(){
+
+    public String watch() {
         String result = "";
         for (int i = 0; i < group.size(); i++) {
             String a1 = group.get(i).getNombre();
             int a2 = group.get(i).getStrength();
             int a3 = group.get(i).getSpeed();
             int a4 = group.get(i).getResistance();
-            result = result + a1 + " " + a2 + " " + a3 + " " + a4 + System.lineSeparator() ;
+            result = result + a1 + " " + a2 + " " + a3 + " " + a4 + System.lineSeparator();
         }
         return result;
-              
+
     }
 
     public void searchtextmode() {
@@ -79,15 +79,15 @@ public class Grupo implements Serializable {
             callOut.printSearchNotFound();
         }
     }
-    
-    public String search(String x){
+
+    public String search(String x) {
         String result = "";
         for (int i = 0; i < group.size(); i++) {
             if (x.equals(group.get(i).getNombre())) {
                 result = result + group.get(i).getNombre() + " " + group.get(i).getStrength()
                         + " " + group.get(i).getSpeed() + " " + group.get(i).getResistance()
                         + System.lineSeparator();
-            } 
+            }
         }
         return result;
     }
@@ -106,12 +106,15 @@ public class Grupo implements Serializable {
         }
     }
 
-    public static void binaryFileRead() throws ClassNotFoundException, FileNotFoundException {
+    public void binaryFileRead() throws ClassNotFoundException, FileNotFoundException {
+        group.removeAll(group);
         try {
-            ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat"));
-            ArrayList<Personaje> newGruoup = new ArrayList<>();
+            ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat")); 
+            Personaje pjnew = (Personaje) oi.readObject();
             while (true) {
-                newGruoup.add((Personaje) oi.readObject());
+                group.add(pjnew);
+                pjnew = (Personaje) oi.readObject();
+                
             }
         } catch (IOException e) {
             e.getMessage();
@@ -130,7 +133,6 @@ public class Grupo implements Serializable {
                 writer.newLine();
             }
             writer.close();
-
         } catch (IOException ex) {
             callOut.printWriterException();
         }
@@ -154,15 +156,7 @@ public class Grupo implements Serializable {
     }
 
     public void fromFileToArray() {
-        int x = 0;
-        if (!group.isEmpty()) {
-            callOut.printLoadAlert();
-            callOut.continueLoad();
-            x = callIn.setInt();
-        }
-        if (group.isEmpty() || x == 1) {
-            try {
-                BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
+            try (BufferedReader reader = new BufferedReader(new FileReader("Data.txt"))) {
                 String line = reader.readLine();
                 group.removeAll(group);
                 while (line != null) {
@@ -178,11 +172,14 @@ public class Grupo implements Serializable {
                     group.add(personaje);
                     line = reader.readLine();
                 }
-                reader.close();
             } catch (IOException ex) {
-                callOut.printReaderException();
+                ex.getMessage();
             }
         }
+    
+    public Personaje getObjetposition(int pos){
+        return group.get(pos);
+    }
 
     }
-}
+

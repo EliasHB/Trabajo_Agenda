@@ -1,30 +1,30 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
+
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
+
 
 public class FXMLController implements Initializable {
 
     Grupo grupo = new Grupo();
-    private Label label;
+    
     @FXML
     private MenuItem menuAdd;
     @FXML
@@ -37,8 +37,6 @@ public class FXMLController implements Initializable {
     private MenuItem menuSave;
     @FXML
     private MenuItem menuLoad;
-    @FXML
-    private Menu exitApp;
     @FXML
     private TextField textName;
     @FXML
@@ -75,10 +73,10 @@ public class FXMLController implements Initializable {
     private MenuItem menuSaveBinary;
     @FXML
     private MenuItem menuLoadBinary;
-
-    private void handleButtonAction(ActionEvent event) {
-
-    }
+    @FXML
+    private Button exitButton;
+    @FXML
+    private AnchorPane fondo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -116,18 +114,6 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
-    private void save(ActionEvent event) {
-    }
-
-    @FXML
-    private void load(ActionEvent event) {
-    }
-
-    @FXML
-    private void exitApp(ActionEvent event) {
-    }
-
-    @FXML
     private void setAdd(ActionEvent event) {
         grupo.add(textName.getText(), Integer.valueOf(intStrength.getText()),
                 Integer.valueOf(intSpeed.getText()), Integer.valueOf(intResis.getText()));
@@ -142,7 +128,31 @@ public class FXMLController implements Initializable {
     @FXML
     private void setSearch(ActionEvent event) {
         textArea.setText(grupo.search(textSearch.getText()));
-       
+    }
+    
+    @FXML
+    private void save(ActionEvent event) {
+        grupo.writeFile();
+    }
+
+    @FXML
+    private void load(ActionEvent event) {
+        grupo.fromFileToArray();
+    }
+
+    
+    @FXML
+    private void saveBinary(ActionEvent event) {
+        grupo.binaryFileWrite();
+    }
+
+    @FXML
+    private void loadBinary(ActionEvent event) {
+        try {
+            grupo.binaryFileRead();
+        } catch (ClassNotFoundException | FileNotFoundException ex) {
+            ex.getMessage();
+        }
     }
 
 
@@ -201,11 +211,8 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
-    private void saveBinary(ActionEvent event) {
-    }
-
-    @FXML
-    private void loadBinary(ActionEvent event) {
+    private void finishApp(ActionEvent event) {
+        Platform.exit();
     }
 
 }

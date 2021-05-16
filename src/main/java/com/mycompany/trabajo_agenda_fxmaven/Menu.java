@@ -45,7 +45,7 @@ public class Menu {
                             elGrupo.writeFile();
                             break;
                         case 2:
-                            Grupo.binaryFileRead();
+                            elGrupo.binaryFileRead();
                             elGrupo.readFile();
                             break;
                         case 3:
