@@ -107,7 +107,7 @@ public class Grupo implements Serializable {
     }
 
     public void binaryFileRead() throws ClassNotFoundException, FileNotFoundException {
-        group.removeAll(group);
+        group.clear();
         try {
             ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat")); 
             Personaje pjnew = (Personaje) oi.readObject();
@@ -124,15 +124,15 @@ public class Grupo implements Serializable {
 
     public void writeFile() {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt"));
-            for (int i = 0; i < group.size(); i++) {
-                writer.write(group.get(i).getNombre() + "#");
-                writer.write(group.get(i).getStrength() + "#");
-                writer.write(group.get(i).getSpeed() + "#");
-                writer.write(group.get(i).getResistance() + "");
-                writer.newLine();
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt"))) {
+                for (int i = 0; i < group.size(); i++) {
+                    writer.write(group.get(i).getNombre() + "#");
+                    writer.write(group.get(i).getStrength() + "#");
+                    writer.write(group.get(i).getSpeed() + "#");
+                    writer.write(group.get(i).getResistance() + "");
+                    writer.newLine();
+                }
             }
-            writer.close();
         } catch (IOException ex) {
             callOut.printWriterException();
         }
@@ -140,15 +140,15 @@ public class Grupo implements Serializable {
 
     public void readFile() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("Data.txt"));
-            String line = reader.readLine();
-            while (line != null) {
-                String[] linesplit = line.split("#");
-                callOut.printData(Arrays.toString(linesplit));
-                callOut.printLineJump();
-                line = reader.readLine();
+            try (BufferedReader reader = new BufferedReader(new FileReader("Data.txt"))) {
+                String line = reader.readLine();
+                while (line != null) {
+                    String[] linesplit = line.split("#");
+                    callOut.printData(Arrays.toString(linesplit));
+                    callOut.printLineJump();
+                    line = reader.readLine();
+                }
             }
-            reader.close();
         } catch (IOException ex) {
             callOut.printReaderException();
         }
@@ -158,7 +158,7 @@ public class Grupo implements Serializable {
     public void fromFileToArray() {
             try (BufferedReader reader = new BufferedReader(new FileReader("Data.txt"))) {
                 String line = reader.readLine();
-                group.removeAll(group);
+                group.clear();
                 while (line != null) {
                     String[] linesplit = line.split("#");
                     int var1 = Integer.parseInt(linesplit[1]);

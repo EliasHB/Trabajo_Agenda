@@ -123,6 +123,7 @@ public class FXMLController implements Initializable {
     @FXML
     private void setRemove(ActionEvent event) {
         grupo.remove(Integer.valueOf(removeTextbox.getText()));
+        removeTextbox.setText("");
     }
     
     @FXML
