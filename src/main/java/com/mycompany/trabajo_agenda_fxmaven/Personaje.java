@@ -8,7 +8,6 @@ public class Personaje implements Comparable<Personaje>, Serializable {
     private int strength;
     private int speed;
     private int resistance;
-    
 
     public String setNombre(String x) {
         nombre = x;

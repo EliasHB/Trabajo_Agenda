@@ -109,12 +109,12 @@ public class Grupo implements Serializable {
     public void binaryFileRead() throws ClassNotFoundException, FileNotFoundException {
         group.clear();
         try {
-            ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat")); 
+            ObjectInputStream oi = new ObjectInputStream(new FileInputStream("BData.dat"));
             Personaje pjnew = (Personaje) oi.readObject();
             while (true) {
                 group.add(pjnew);
                 pjnew = (Personaje) oi.readObject();
-                
+
             }
         } catch (IOException e) {
             e.getMessage();
@@ -156,30 +156,29 @@ public class Grupo implements Serializable {
     }
 
     public void fromFileToArray() {
-            try (BufferedReader reader = new BufferedReader(new FileReader("Data.txt"))) {
-                String line = reader.readLine();
-                group.clear();
-                while (line != null) {
-                    String[] linesplit = line.split("#");
-                    int var1 = Integer.parseInt(linesplit[1]);
-                    int var2 = Integer.parseInt(linesplit[2]);
-                    int var3 = Integer.parseInt(linesplit[3]);
-                    personaje = new Personaje();
-                    personaje.setNombre(linesplit[0]);
-                    personaje.setStrength(var1);
-                    personaje.setSpeed(var2);
-                    personaje.setResistance(var3);
-                    group.add(personaje);
-                    line = reader.readLine();
-                }
-            } catch (IOException ex) {
-                ex.getMessage();
+        try (BufferedReader reader = new BufferedReader(new FileReader("Data.txt"))) {
+            String line = reader.readLine();
+            group.clear();
+            while (line != null) {
+                String[] linesplit = line.split("#");
+                int var1 = Integer.parseInt(linesplit[1]);
+                int var2 = Integer.parseInt(linesplit[2]);
+                int var3 = Integer.parseInt(linesplit[3]);
+                personaje = new Personaje();
+                personaje.setNombre(linesplit[0]);
+                personaje.setStrength(var1);
+                personaje.setSpeed(var2);
+                personaje.setResistance(var3);
+                group.add(personaje);
+                line = reader.readLine();
             }
+        } catch (IOException ex) {
+            ex.getMessage();
         }
-    
-    public Personaje getObjetposition(int pos){
+    }
+
+    public Personaje getObjetposition(int pos) {
         return group.get(pos);
     }
 
-    }
-
+}

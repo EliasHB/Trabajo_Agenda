@@ -1,7 +1,5 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
-
-
 public class Output {
 
     public void printmenu() {
@@ -36,7 +34,6 @@ public class Output {
     public void printAtrib() {
         System.out.println("Introduzca nombre, fuerza, velocidad y resistencia");
     }
-
 
     public void printOutOfSpace() {
         System.out.println("Tabla llena");

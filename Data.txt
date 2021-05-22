@@ -1,3 +1,19 @@
-ada#6#6#7
-orion#5#5#5
-wu shang#7#3#1
+Ada#6#6#3
+Asuri#4#6#5
+Azoth#7#4#6
+Barraza#6#4#8
+Bodvar#6#5#5
+Brynn#5#7#5
+Cassidy#6#4#4
+Diana#6#6#5
+Ember#6#7#3
+Gnash#7#7#5
+Hattori#4#8#4
+Koji#5#8#5
+Lucien#3#8#6
+Orion#4#7#6
+Scarlet#8#4#5
+Sentinel#5#6#7
+Sir Roland#5#4#8
+Ulgrim#6#6#7
+Wu Shang#7#4#6

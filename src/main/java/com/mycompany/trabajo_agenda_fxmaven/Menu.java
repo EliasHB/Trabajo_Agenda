@@ -12,7 +12,7 @@ public class Menu {
         while (variable != 7) {
             callOut.printmenu();
             variable = callIn.setInt();
-            switch (variable) {                
+            switch (variable) {
                 case 1:
                     callOut.printAtrib();
                     String name = callIn.setFrase();

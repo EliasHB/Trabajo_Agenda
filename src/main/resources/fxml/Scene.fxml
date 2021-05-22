@@ -10,39 +10,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="fondo" fx:id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="603.0" style="-fx-background-color: black;" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.trabajo_agenda_fxmaven.FXMLController">
-   <children>
-      <MenuBar id="menuBar" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: lightgreen; -fx-border-color: green;" stylesheets="@../styles/Styles.css">
-        <menus>
-          <Menu id="menuBarOptions" mnemonicParsing="false" text="Options">
-            <items>
-              <MenuItem fx:id="menuAdd" mnemonicParsing="false" onAction="#add" text="Add" />
-                  <MenuItem fx:id="menuRemove" mnemonicParsing="false" onAction="#remove" text="Remove" />
-                  <MenuItem fx:id="menuSearch" mnemonicParsing="false" onAction="#search" text="Search" />
-                  <MenuItem fx:id="orderShow" mnemonicParsing="false" onAction="#orderAndShow" text="Order &amp; Show" />
-                  <MenuItem fx:id="menuSave" mnemonicParsing="false" onAction="#save" text="Guardar en texto" />
-                  <MenuItem fx:id="menuSaveBinary" mnemonicParsing="false" onAction="#saveBinary" text="Guardar en binario" />
-                  <MenuItem fx:id="menuLoad" mnemonicParsing="false" onAction="#load" text="Cargar desde texto" />
-                  <MenuItem fx:id="menuLoadBinary" mnemonicParsing="false" onAction="#loadBinary" text="Cargar desde binario" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TextArea id="textArea" fx:id="textArea" editable="false" layoutY="30.0" prefHeight="370.0" prefWidth="200.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
-      <TextField id="textField" fx:id="textName" layoutX="420.0" layoutY="80.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
-      <TextField id="textField" fx:id="intStrength" layoutX="420.0" layoutY="116.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
-      <TextField id="textField" fx:id="intSpeed" layoutX="420.0" layoutY="152.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
-      <TextField id="textField" fx:id="intResis" layoutX="420.0" layoutY="188.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
-      <Label id="label" fx:id="label1" layoutX="364.0" layoutY="84.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Name:" visible="false" />
-      <Label id="label" fx:id="label2" layoutX="356.0" layoutY="120.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Strength:" visible="false" />
-      <Label id="label" fx:id="label3" layoutX="363.0" layoutY="156.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Speed:" visible="false" />
-      <Label id="label" fx:id="label4" layoutX="351.0" layoutY="192.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Resistance:" visible="false" />
-      <Button id="buttonAdd" fx:id="buttonAdd" layoutX="469.0" layoutY="235.0" mnemonicParsing="false" onAction="#setAdd" stylesheets="@../styles/Styles.css" text="Add" visible="false" />
-      <TextField id="textField" fx:id="removeTextbox" layoutX="395.0" layoutY="89.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
-      <Label id="label" fx:id="removeint" layoutX="322.0" layoutY="93.0" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Posicion:" visible="false" />
-      <Button id="buttonRemove" fx:id="removeButton" layoutX="443.0" layoutY="176.0" mnemonicParsing="false" onAction="#setRemove" stylesheets="@../styles/Styles.css" text="Remove" visible="false" />
-      <Label id="label" fx:id="labelSearch" layoutX="352.0" layoutY="106.0" prefHeight="17.0" prefWidth="49.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Nombre:" visible="false" />
-      <TextField id="textField" fx:id="textSearch" layoutX="414.0" layoutY="102.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
-      <Button id="buttonSearch" fx:id="buttonSearch" layoutX="447.0" layoutY="165.0" mnemonicParsing="false" onAction="#setSearch" stylesheets="@../styles/Styles.css" text="Buscar" visible="false" />
-      <Button fx:id="exitButton" layoutX="296.0" layoutY="360.0" mnemonicParsing="false" onAction="#finishApp" style="-fx-border-color: darkgreen; -fx-background-color: lightgreen;" stylesheets="@../styles/Styles.css" text="Salir" />
-   </children>
+    <children>
+        <MenuBar id="menuBar" prefHeight="27.0" prefWidth="149.0" style="-fx-background-color: lightgreen; -fx-border-color: green;" stylesheets="@../styles/Styles.css">
+            <menus>
+                <Menu id="menuBarOptions" mnemonicParsing="false" text="Options">
+                    <items>
+                        <MenuItem fx:id="menuAdd" mnemonicParsing="false" onAction="#add" text="Add" />
+                        <MenuItem fx:id="menuRemove" mnemonicParsing="false" onAction="#remove" text="Remove" />
+                        <MenuItem fx:id="menuSearch" mnemonicParsing="false" onAction="#search" text="Search" />
+                        <MenuItem fx:id="orderShow" mnemonicParsing="false" onAction="#orderAndShow" text="Order &amp; Show" />
+                        <MenuItem fx:id="menuSave" mnemonicParsing="false" onAction="#save" text="Guardar en texto" />
+                        <MenuItem fx:id="menuSaveBinary" mnemonicParsing="false" onAction="#saveBinary" text="Guardar en binario" />
+                        <MenuItem fx:id="menuLoad" mnemonicParsing="false" onAction="#load" text="Cargar desde texto" />
+                        <MenuItem fx:id="menuLoadBinary" mnemonicParsing="false" onAction="#loadBinary" text="Cargar desde binario" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Data Base">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#saveInDB" text="Guardar" />
+                        <MenuItem mnemonicParsing="false" onAction="#loadFromDB" text="Cargar" />
+                        <MenuItem mnemonicParsing="false" onAction="#consult" text="Consultar datos" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TextArea id="textArea" fx:id="textArea" editable="false" layoutY="30.0" prefHeight="370.0" prefWidth="200.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
+        <TextField id="textField" fx:id="textName" layoutX="420.0" layoutY="80.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
+        <TextField id="textField" fx:id="intStrength" layoutX="420.0" layoutY="116.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
+        <TextField id="textField" fx:id="intSpeed" layoutX="420.0" layoutY="152.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
+        <TextField id="textField" fx:id="intResis" layoutX="420.0" layoutY="188.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
+        <Label id="label" fx:id="label1" layoutX="364.0" layoutY="84.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Name:" visible="false" />
+        <Label id="label" fx:id="label2" layoutX="356.0" layoutY="120.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Strength:" visible="false" />
+        <Label id="label" fx:id="label3" layoutX="363.0" layoutY="156.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Speed:" visible="false" />
+        <Label id="label" fx:id="label4" layoutX="351.0" layoutY="192.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Resistance:" visible="false" />
+        <Button id="buttonAdd" fx:id="buttonAdd" layoutX="469.0" layoutY="235.0" mnemonicParsing="false" onAction="#setAdd" stylesheets="@../styles/Styles.css" text="Add" visible="false" />
+        <TextField id="textField" fx:id="removeTextbox" layoutX="395.0" layoutY="89.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
+        <Label id="label" fx:id="removeint" layoutX="322.0" layoutY="93.0" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Posicion:" visible="false" />
+        <Button id="buttonRemove" fx:id="removeButton" layoutX="443.0" layoutY="176.0" mnemonicParsing="false" onAction="#setRemove" stylesheets="@../styles/Styles.css" text="Remove" visible="false" />
+        <Label id="label" fx:id="labelSearch" layoutX="352.0" layoutY="106.0" prefHeight="17.0" prefWidth="49.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" text="Nombre:" visible="false" />
+        <TextField id="textField" fx:id="textSearch" layoutX="414.0" layoutY="102.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />
+        <Button id="buttonSearch" fx:id="buttonSearch" layoutX="447.0" layoutY="165.0" mnemonicParsing="false" onAction="#setSearch" stylesheets="@../styles/Styles.css" text="Buscar" visible="false" />
+        <Button fx:id="exitButton" layoutX="296.0" layoutY="360.0" mnemonicParsing="false" onAction="#finishApp" style="-fx-border-color: darkgreen; -fx-background-color: lightgreen;" stylesheets="@../styles/Styles.css" text="Salir" />
+    </children>
 </AnchorPane>

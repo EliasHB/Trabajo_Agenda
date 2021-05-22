@@ -1,9 +1,8 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
-
 import java.util.Scanner;
 
-public class Input{
+public class Input {
 
     private int value;
     private String frase;
@@ -15,7 +14,7 @@ public class Input{
         return frase;
     }
 
-    public int setInt() {        
+    public int setInt() {
         value = sc.nextInt();
         return value;
     }
