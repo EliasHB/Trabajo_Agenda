@@ -11,7 +11,7 @@
 
 <AnchorPane id="fondo" fx:id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="603.0" style="-fx-background-color: black;" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.trabajo_agenda_fxmaven.FXMLController">
     <children>
-        <MenuBar id="menuBar" prefHeight="27.0" prefWidth="149.0" style="-fx-background-color: lightgreen; -fx-border-color: green;" stylesheets="@../styles/Styles.css">
+        <MenuBar id="menuBar" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: lightgreen; -fx-border-color: green;" stylesheets="@../styles/Styles.css">
             <menus>
                 <Menu id="menuBarOptions" mnemonicParsing="false" text="Options">
                     <items>
@@ -32,6 +32,12 @@
                         <MenuItem mnemonicParsing="false" onAction="#consult" text="Consultar datos" />
                     </items>
                 </Menu>
+            <Menu mnemonicParsing="false" text="XML">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#saveXML" text="Guardar" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadXML" text="Cargar" />
+              </items>
+            </Menu>
             </menus>
         </MenuBar>
         <TextArea id="textArea" fx:id="textArea" editable="false" layoutY="30.0" prefHeight="370.0" prefWidth="200.0" style="-fx-background-color: white;" stylesheets="@../styles/Styles.css" visible="false" />

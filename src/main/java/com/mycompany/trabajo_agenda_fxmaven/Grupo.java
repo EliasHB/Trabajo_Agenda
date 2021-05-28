@@ -2,7 +2,6 @@ package com.mycompany.trabajo_agenda_fxmaven;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,12 +14,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class Grupo implements Serializable {
 
     private final ArrayList<Personaje> group = new ArrayList<>();
     private Personaje personaje;
     private final Output callOut = new Output();
     private final Input callIn = new Input();
+    
 
     public void add(String name, int strength, int speed, int resis) {
         personaje = new Personaje();
@@ -30,7 +31,7 @@ public class Grupo implements Serializable {
         personaje.setResistance(resis);
         group.add(personaje);
     }
-
+    
     public void remove(int x) {
         group.remove(x);
     }
