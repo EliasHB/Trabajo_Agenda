@@ -1,9 +1,7 @@
 package com.mycompany.trabajo_agenda_fxmaven;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,28 +9,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.Set;
-
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
+import javax.xml.bind.JAXBException;
 
 public class FXMLController implements Initializable {
 
@@ -240,25 +230,16 @@ public class FXMLController implements Initializable {
         stage.show();
 
     }
-    
+
     @FXML
-    private void saveXML(ActionEvent event) {
-        try {
-            File file = new File("prueba.xml");
-            JAXBContext context = JAXBContext.newInstance(PersonajeSetWrapper.class);
-            Marshaller m = context.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            PersonajeSetWrapper wrapper = new PersonajeSetWrapper();
-            wrapper.setPersonajes();
-        } catch (Exception e) {
-            
-        }
+    private void saveXML(ActionEvent event) throws JAXBException {
+        grupo.saveXML();
     }
 
     @FXML
-    private void loadXML(ActionEvent event) {
+    private void loadXML(ActionEvent event) throws JAXBException {
+        Grupo.loadXML();
     }
-
 
     private void setVisibleAddTrue() {
         label1.setVisible(true);

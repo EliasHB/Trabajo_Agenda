@@ -2,6 +2,7 @@ package com.mycompany.trabajo_agenda_fxmaven;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,15 +14,24 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-
+@XmlRootElement(name = "Grupo")
 public class Grupo implements Serializable {
 
+    @XmlElement(name = "Lista")
     private final ArrayList<Personaje> group = new ArrayList<>();
     private Personaje personaje;
     private final Output callOut = new Output();
     private final Input callIn = new Input();
-    
+
+    public Grupo() {
+    }
 
     public void add(String name, int strength, int speed, int resis) {
         personaje = new Personaje();
@@ -31,7 +41,7 @@ public class Grupo implements Serializable {
         personaje.setResistance(resis);
         group.add(personaje);
     }
-    
+
     public void remove(int x) {
         group.remove(x);
     }
@@ -180,6 +190,23 @@ public class Grupo implements Serializable {
 
     public Personaje getObjetposition(int pos) {
         return group.get(pos);
+    }
+
+    public void saveXML() throws JAXBException {
+        File fileXML = new File("XMLdata.xml");
+        JAXBContext context = JAXBContext.newInstance(Grupo.class);
+        Marshaller m = context.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        m.marshal(this, fileXML);
+
+    }
+
+    public static Grupo loadXML() throws JAXBException {
+        File fileXML = new File("XMLdata.xml");
+        JAXBContext context = JAXBContext.newInstance(Grupo.class);
+        Unmarshaller um = context.createUnmarshaller();
+        Grupo nuevoGrupo = (Grupo) um.unmarshal(fileXML);
+        return nuevoGrupo;
     }
 
 }
