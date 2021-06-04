@@ -56,7 +56,8 @@ public class Scene3Controller implements Initializable {
             st.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(Scene3Controller.class.getName()).log(Level.SEVERE, null, ex);
+            textArea.setText("No se ha podido conectar con la" + System.lineSeparator() 
+                    + " base de datos o esta vacia");
         }
 
     }

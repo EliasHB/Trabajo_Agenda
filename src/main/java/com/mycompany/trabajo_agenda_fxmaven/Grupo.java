@@ -198,7 +198,6 @@ public class Grupo implements Serializable {
         Marshaller m = context.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         m.marshal(this, fileXML);
-
     }
 
     public static Grupo loadXML() throws JAXBException {
