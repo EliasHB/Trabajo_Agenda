@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -171,21 +172,30 @@ public class Grupo implements Serializable {
             String line = reader.readLine();
             group.clear();
             while (line != null) {
-                String[] linesplit = line.split("#");
-                int var1 = Integer.parseInt(linesplit[1]);
-                int var2 = Integer.parseInt(linesplit[2]);
-                int var3 = Integer.parseInt(linesplit[3]);
-                personaje = new Personaje();
-                personaje.setNombre(linesplit[0]);
-                personaje.setStrength(var1);
-                personaje.setSpeed(var2);
-                personaje.setResistance(var3);
-                group.add(personaje);
-                line = reader.readLine();
+                if (validRegularExpresion(line)) {
+                    String[] linesplit = line.split("#");
+                    int var1 = Integer.parseInt(linesplit[1]);
+                    int var2 = Integer.parseInt(linesplit[2]);
+                    int var3 = Integer.parseInt(linesplit[3]);
+                    personaje = new Personaje();
+                    personaje.setNombre(linesplit[0]);
+                    personaje.setStrength(var1);
+                    personaje.setSpeed(var2);
+                    personaje.setResistance(var3);
+                    group.add(personaje);
+                    line = reader.readLine();
+                } else {
+                    line = reader.readLine();
+                }
             }
         } catch (IOException ex) {
             ex.getMessage();
         }
+    }
+
+    private boolean validRegularExpresion(String x) {
+        String regex = "[a-zA-Z]{1,}#\\d{1}#\\d{1}#\\d{1}";
+        return Pattern.matches(regex, x);
     }
 
     public Personaje getObjetposition(int pos) {
